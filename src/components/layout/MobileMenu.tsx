@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { company, regionalContacts } from '../../content/company';
 import { gsap, motionOK } from '../../lib/motion';
-import { TLink } from './PageTransition';
+import { AppLink } from './Navigation';
 import { NAV } from './Header';
 import { ArrowUpRight } from '../ui/Icons';
 
@@ -73,7 +73,7 @@ export function MobileMenu({ open, onClose, isActive }: Props) {
         <ul className="border-t border-on-dark/15">
           {[{ to: '/', label: 'Etusivu' }, ...NAV].map((item, i) => (
             <li key={item.to} className="overflow-hidden border-b border-on-dark/15">
-              <TLink
+              <AppLink
                 to={item.to}
                 data-menu-item
                 aria-current={isActive(item.to) && item.to !== '/' ? 'page' : undefined}
@@ -82,18 +82,18 @@ export function MobileMenu({ open, onClose, isActive }: Props) {
               >
                 <span className="t-display text-[clamp(2.4rem,11vw,4rem)] group-aria-[current=page]:text-signal-bright">{item.label}</span>
                 <span className="t-label text-on-dark-2">0{i + 1}</span>
-              </TLink>
+              </AppLink>
             </li>
           ))}
         </ul>
       </nav>
       <div data-menu-fade className="wrap grid gap-6 py-10 sm:grid-cols-2">
-        <TLink to="/yhteystiedot#tarjouspyynto" className="btn w-full sm:col-span-2" onClick={onClose}>
+        <AppLink to="/yhteystiedot#tarjouspyynto" className="btn w-full sm:col-span-2" onClick={onClose}>
           <span className="btn-label flex-1">Pyydä tarjous</span>
           <span className="btn-icon">
             <ArrowUpRight className="size-4" />
           </span>
-        </TLink>
+        </AppLink>
         {Object.entries(regionalContacts).map(([region, p]) => (
           <div key={region}>
             <p className="t-label text-on-dark-2">{region === 'pohjois-karjala' ? 'Pohjois-Karjala' : 'Pohjois-Savo'}</p>

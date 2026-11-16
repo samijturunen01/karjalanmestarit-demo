@@ -1,6 +1,6 @@
 import { ServiceDrawing } from '../components/drawings/ServiceDrawing';
 import { ClosingCta } from '../components/home/ClosingCta';
-import { TLink } from '../components/layout/PageTransition';
+import { AppLink } from '../components/layout/Navigation';
 import { ArrowRight } from '../components/ui/Icons';
 import { PageHero } from '../components/ui/PageHero';
 import { Picture } from '../components/ui/Picture';
@@ -43,13 +43,13 @@ export function Services() {
                     <p data-reveal className="mt-5 max-w-[56ch] text-ink-2">
                       {s.lead}
                     </p>
-                    <TLink data-reveal to={`/palvelut/${s.slug}`} className="btn mt-9">
+                    <AppLink data-reveal to={`/palvelut/${s.slug}`} className="btn mt-9">
                       <span className="btn-label">Lue lisää</span>
                       <span className="btn-icon">
                         <ArrowRight className="size-4" />
                       </span>
                       <span className="sr-only">: {s.title}</span>
-                    </TLink>
+                    </AppLink>
                   </div>
                   <div className={`lg:col-span-6 ${i % 2 ? 'lg:order-1' : ''}`}>
                     <figure className="relative border border-ink/20 bg-paper-2/60">

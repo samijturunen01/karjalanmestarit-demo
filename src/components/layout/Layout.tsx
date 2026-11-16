@@ -4,7 +4,7 @@ import { metaFor } from '../../content/seo';
 import { DemoNotice } from './DemoNotice';
 import { Footer } from './Footer';
 import { Header } from './Header';
-import { TransitionProvider } from './PageTransition';
+import { RouteChangeEffects } from './Navigation';
 import { useReveals } from './useReveals';
 
 /**
@@ -31,7 +31,8 @@ export function Layout() {
   }, [pathname]);
 
   return (
-    <TransitionProvider>
+    <>
+      <RouteChangeEffects />
       <a href="#main" className="skip-link">
         Siirry sisältöön
       </a>
@@ -45,6 +46,6 @@ export function Layout() {
       </main>
       <Footer />
       <DemoNotice />
-    </TransitionProvider>
+    </>
   );
 }

@@ -6,7 +6,7 @@ import { lazy, type ComponentType, type ReactElement } from 'react';
  *    synchronously (no Suspense fallback), so prerendered HTML hydrates as-is;
  *  - the server preloads every page before rendering;
  *  - the client preloads the current page before hydrating, and the target
- *    page while the transition sheet is covering the screen.
+ *    page on link hover/focus and before navigating.
  */
 type Loader = () => Promise<{ default: ComponentType }>;
 

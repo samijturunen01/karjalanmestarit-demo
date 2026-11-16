@@ -1,5 +1,5 @@
 import { ClosingCta } from '../components/home/ClosingCta';
-import { TLink } from '../components/layout/PageTransition';
+import { AppLink } from '../components/layout/Navigation';
 import { RefMap } from '../components/references/RefMap';
 import { ArrowRight } from '../components/ui/Icons';
 import { PageHero } from '../components/ui/PageHero';
@@ -106,10 +106,10 @@ export function Company() {
               ))}
             </ul>
           </div>
-          <TLink data-reveal to="/yhteystiedot" className="group mt-12 inline-flex items-center gap-3 font-[620]">
+          <AppLink data-reveal to="/yhteystiedot" className="group mt-12 inline-flex items-center gap-3 font-[620]">
             <span className="link-line">Henkilöstön yhteystiedot</span>
             <ArrowRight className="size-4 transition-transform duration-500 group-hover:translate-x-1" />
-          </TLink>
+          </AppLink>
         </div>
       </section>
 

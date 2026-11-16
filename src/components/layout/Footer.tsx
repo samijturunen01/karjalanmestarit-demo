@@ -3,7 +3,7 @@ import { services } from '../../content/services';
 import { Logo } from '../brand/Logo';
 import { ArrowUp } from '../ui/Icons';
 import { NAV } from './Header';
-import { TLink } from './PageTransition';
+import { AppLink } from './Navigation';
 
 const DEMO = import.meta.env.VITE_DEMO_MODE !== 'false';
 
@@ -18,9 +18,9 @@ export function Footer() {
 
       <div className="wrap relative pt-28 pb-10">
         <div className="flex flex-col gap-10 border-b border-on-dark/15 pb-14 md:flex-row md:items-end md:justify-between">
-          <TLink to="/" aria-label="Karjalan Mestarit Oy – etusivulle" className="block w-fit">
+          <AppLink to="/" aria-label="Karjalan Mestarit Oy – etusivulle" className="block w-fit">
             <Logo variant="reverse" title="" className="h-auto w-56 md:w-72" />
-          </TLink>
+          </AppLink>
           <p className="t-display text-[clamp(2.6rem,7vw,6rem)] text-on-dark">
             {company.slogan.replace('!', '')}
             <span className="text-signal-bright">!</span>
@@ -62,9 +62,9 @@ export function Footer() {
             <ul className="mt-4 space-y-2">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <TLink to={`/palvelut/${s.slug}`} className="link-draw">
+                  <AppLink to={`/palvelut/${s.slug}`} className="link-draw">
                     {s.title}
-                  </TLink>
+                  </AppLink>
                 </li>
               ))}
             </ul>
@@ -74,15 +74,15 @@ export function Footer() {
             <h2 className="t-label text-on-dark-2">Sivusto</h2>
             <ul className="mt-4 space-y-2">
               <li>
-                <TLink to="/" className="link-draw">
+                <AppLink to="/" className="link-draw">
                   Etusivu
-                </TLink>
+                </AppLink>
               </li>
               {NAV.map((n) => (
                 <li key={n.to}>
-                  <TLink to={n.to} className="link-draw">
+                  <AppLink to={n.to} className="link-draw">
                     {n.label}
-                  </TLink>
+                  </AppLink>
                 </li>
               ))}
             </ul>

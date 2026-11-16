@@ -1,4 +1,4 @@
-import { TLink } from '../components/layout/PageTransition';
+import { AppLink } from '../components/layout/Navigation';
 import { ArrowRight } from '../components/ui/Icons';
 
 export function NotFound() {
@@ -16,18 +16,18 @@ export function NotFound() {
         </h1>
         <p className="t-lead mt-8 max-w-[44ch] text-ink-2">Hakemaasi sivua ei löytynyt. Se on voinut siirtyä, tai osoitteessa on kirjoitusvirhe.</p>
         <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <TLink to="/" className="btn">
+          <AppLink to="/" className="btn">
             <span className="btn-label">Etusivulle</span>
             <span className="btn-icon">
               <ArrowRight className="size-4" />
             </span>
-          </TLink>
-          <TLink to="/palvelut" className="link-line font-[620]">
+          </AppLink>
+          <AppLink to="/palvelut" className="link-line font-[620]">
             Palvelut
-          </TLink>
-          <TLink to="/referenssit" className="link-line font-[620]">
+          </AppLink>
+          <AppLink to="/referenssit" className="link-line font-[620]">
             Referenssit
-          </TLink>
+          </AppLink>
         </div>
       </div>
     </section>

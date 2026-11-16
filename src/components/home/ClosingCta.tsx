@@ -1,6 +1,6 @@
 import { Mail, Phone } from 'lucide-react';
 import { company, regionalContacts } from '../../content/company';
-import { TLink } from '../layout/PageTransition';
+import { AppLink } from '../layout/Navigation';
 import { ArrowRight } from '../ui/Icons';
 
 /** Closing call to action with the two regional site managers. */
@@ -54,12 +54,12 @@ export function ClosingCta({ index = '06' }: { index?: string }) {
         </div>
 
         <div data-reveal className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-6">
-          <TLink to="/yhteystiedot#tarjouspyynto" className="btn">
+          <AppLink to="/yhteystiedot#tarjouspyynto" className="btn">
             <span className="btn-label">Pyydä tarjous</span>
             <span className="btn-icon">
               <ArrowRight className="size-4" />
             </span>
-          </TLink>
+          </AppLink>
           <p className="text-on-dark-2">
             Toimitusjohtaja Petri Laitinen{' '}
             <a href={`tel:${company.phoneHref}`} className="t-mono tabular link-line ml-2 text-on-dark">

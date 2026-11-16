@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 import { company } from '../../content/company';
 import { gsap, motionOK } from '../../lib/motion';
 import { Logo } from '../brand/Logo';
-import { TLink } from './PageTransition';
+import { AppLink } from './Navigation';
 import { MobileMenu } from './MobileMenu';
 import { ArrowRight } from '../ui/Icons';
 
@@ -61,7 +61,7 @@ export function Header() {
         ].join(' ')}
       >
         <div className="wrap flex h-[var(--header-h)] items-center justify-between gap-6">
-          <TLink
+          <AppLink
             to="/"
             aria-label="Karjalan Mestarit Oy – etusivulle"
             className="relative -my-2 block py-2"
@@ -72,19 +72,19 @@ export function Header() {
             <span data-header-logo className="block">
               <Logo title="" className="h-auto w-[6.75rem] sm:w-[8.25rem]" />
             </span>
-          </TLink>
+          </AppLink>
 
           <nav aria-label="Päävalikko" data-header-fade className="hidden lg:block">
             <ul className="flex items-center gap-9 text-[0.95rem] font-[560]">
               {NAV.map((item) => (
                 <li key={item.to}>
-                  <TLink
+                  <AppLink
                     to={item.to}
                     aria-current={isActive(item.to) ? 'page' : undefined}
                     className={`link-draw py-1 transition-colors ${isActive(item.to) ? 'text-signal-ink' : 'hover:text-signal-ink'}`}
                   >
                     {item.label}
-                  </TLink>
+                  </AppLink>
                 </li>
               ))}
             </ul>
@@ -95,12 +95,12 @@ export function Header() {
               <Phone aria-hidden="true" className="size-3.5" strokeWidth={1.75} />
               <span className="link-draw">{company.phone}</span>
             </a>
-            <TLink to="/yhteystiedot#tarjouspyynto" className="btn hidden !min-h-[2.75rem] text-[0.9rem] md:inline-flex">
+            <AppLink to="/yhteystiedot#tarjouspyynto" className="btn hidden !min-h-[2.75rem] text-[0.9rem] md:inline-flex">
               <span className="btn-label !px-4">Pyydä tarjous</span>
               <span className="btn-icon !w-[2.75rem]">
                 <ArrowRight className="size-4" />
               </span>
-            </TLink>
+            </AppLink>
             <button
               type="button"
               className="group -mr-2 flex h-11 items-center gap-3 px-2 lg:hidden"

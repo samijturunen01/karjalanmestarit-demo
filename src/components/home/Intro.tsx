@@ -1,6 +1,6 @@
 import { company, copy } from '../../content/company';
 import { gsap, SplitText, useGsap } from '../../lib/motion';
-import { TLink } from '../layout/PageTransition';
+import { AppLink } from '../layout/Navigation';
 import { ArrowRight } from '../ui/Icons';
 import { Picture } from '../ui/Picture';
 import { SectionHead } from '../ui/Section';
@@ -74,10 +74,10 @@ export function Intro() {
               ))}
             </dl>
 
-            <TLink data-reveal to="/yritys" className="group mt-10 inline-flex items-center gap-3 self-start font-[620]">
+            <AppLink data-reveal to="/yritys" className="group mt-10 inline-flex items-center gap-3 self-start font-[620]">
               <span className="link-line">Lue lisää yrityksestä</span>
               <ArrowRight className="size-4 transition-transform duration-500 group-hover:translate-x-1" />
-            </TLink>
+            </AppLink>
           </div>
         </div>
       </div>

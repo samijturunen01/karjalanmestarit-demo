@@ -1,7 +1,7 @@
 import { Mail, Phone } from 'lucide-react';
 import { useParams } from 'react-router';
 import { ServiceDrawing } from '../components/drawings/ServiceDrawing';
-import { TLink } from '../components/layout/PageTransition';
+import { AppLink } from '../components/layout/Navigation';
 import { ArrowRight } from '../components/ui/Icons';
 import { PageHero } from '../components/ui/PageHero';
 import { Picture } from '../components/ui/Picture';
@@ -55,12 +55,12 @@ export function ServiceDetail() {
                 ['Asiakkaat', 'Yksityiset, taloyhtiöt, yritykset ja julkiset kohteet'],
               ]}
             />
-            <TLink data-reveal to="/yhteystiedot#tarjouspyynto" className="btn self-start">
+            <AppLink data-reveal to="/yhteystiedot#tarjouspyynto" className="btn self-start">
               <span className="btn-label">Pyydä tarjous</span>
               <span className="btn-icon">
                 <ArrowRight className="size-4" />
               </span>
-            </TLink>
+            </AppLink>
           </div>
         </div>
       </section>
@@ -133,7 +133,7 @@ export function ServiceDetail() {
           ].map(([label, s], k) => {
             const svc = s as (typeof services)[number];
             return (
-              <TLink
+              <AppLink
                 key={label as string}
                 to={`/palvelut/${svc.slug}`}
                 className={`group flex flex-col gap-6 py-12 md:py-16 ${k ? 'border-t border-on-dark/15 md:border-t-0 md:border-l md:pl-10 md:text-right' : 'md:pr-10'}`}
@@ -144,7 +144,7 @@ export function ServiceDetail() {
                 <span className="t-h2 text-[clamp(1.9rem,3.6vw,3.25rem)] transition-colors duration-300 group-hover:text-signal-bright">
                   {svc.title}
                 </span>
-              </TLink>
+              </AppLink>
             );
           })}
         </div>

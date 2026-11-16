@@ -17,7 +17,7 @@ The site is art-directed like an architect's drawing sheet that turns into a bui
 - **Palette:** warm limestone paper, graphite lines, bitumen black and the logo's signal red.
 - **Type:** Mona Sans in its condensed heavy cut for headlines (echoing the logo's lettering), Mona Sans for text, IBM Plex Mono for technical labels.
 - **Logo intro "Talosta kotiin":** construction lines draw a house outline and guide circle, the authentic spiral (traced from the original logo) winds in along its own centre line, the little house settles in, the words rise from their baselines, and the logo flies into the header while the hero photo is "roofed" by a rising roof silhouette. Runs once per session, skips on any scroll/key, and is off for reduced motion.
-- **Motion language "limitys" (overlap):** content is laid like roofing courses; images uncover from the eave upwards; section rules draw like eave lines; page transitions slide a standing-seam sheet with a red drip edge across the screen.
+- **Motion language "limitys" (overlap):** content is laid like roofing courses; images uncover from the eave upwards; section rules draw like eave lines; page navigation is immediate, with no transition overlay.
 - **Technical drawings** (one per service) replace missing photography and draw themselves on scroll. Other recurring details: drawing-sheet title blocks ("nimiö"), roof-pitch hairlines, a survey-grid map of reference locations.
 
 ## Pages
@@ -58,7 +58,7 @@ Build-time options are documented in [`.env.example`](.env.example)
 React 19 · Vite 8 · TypeScript · Tailwind CSS 4 · React Router 8 · GSAP 3
 (ScrollTrigger, SplitText, Flip) · Lucide · self-hosted fonts. Static
 prerendering with React SSR (`scripts/prerender.mjs`) and hydration; routes
-other than the home page are code-split and preloaded during the page transition.
+other than the home page are code-split and prefetched on link hover/focus and loaded before navigating.
 
 ## Structure
 
@@ -68,7 +68,7 @@ src/
   components/
     brand/          logo (traced SVG paths), spiral centre line
     home/           hero, logo intro and home sections
-    layout/         header, mobile menu, footer, page transition, reveal system
+    layout/         header, mobile menu, footer, navigation links, reveal system
     references/     ledger, gallery, map
     contact/        quote form
     drawings/       technical service drawings

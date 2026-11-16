@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { services } from '../../content/services';
 import { gsap, motionOK } from '../../lib/motion';
 import { ServiceDrawing } from '../drawings/ServiceDrawing';
-import { TLink } from '../layout/PageTransition';
+import { AppLink } from '../layout/Navigation';
 import { ArrowRight, ArrowUpRight } from '../ui/Icons';
 import { SectionHead } from '../ui/Section';
 
@@ -53,7 +53,7 @@ export function ServicesIndex() {
           <ol className="lg:col-span-7">
             {services.map((s, i) => (
               <li key={s.slug} data-reveal className="border-t border-on-dark/15 last:border-b">
-                <TLink
+                <AppLink
                   to={`/palvelut/${s.slug}`}
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
@@ -69,7 +69,7 @@ export function ServicesIndex() {
                   </span>
                   <ArrowUpRight className="size-5 self-center text-on-dark-2 transition-all duration-500 group-hover:rotate-45 group-hover:text-signal-bright" />
                   <span className="col-start-2 mt-2 max-w-[48ch] text-[0.95rem] text-on-dark-2 lg:hidden">{s.short}</span>
-                </TLink>
+                </AppLink>
               </li>
             ))}
           </ol>
@@ -93,12 +93,12 @@ export function ServicesIndex() {
           </div>
         </div>
 
-        <TLink data-reveal to="/palvelut" className="btn btn-on-dark mt-14">
+        <AppLink data-reveal to="/palvelut" className="btn btn-on-dark mt-14">
           <span className="btn-label">Kaikki palvelut</span>
           <span className="btn-icon">
             <ArrowRight className="size-4" />
           </span>
-        </TLink>
+        </AppLink>
       </div>
     </section>
   );

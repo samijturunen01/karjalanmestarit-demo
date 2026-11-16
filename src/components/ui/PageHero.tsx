@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { TLink } from '../layout/PageTransition';
+import { AppLink } from '../layout/Navigation';
 
 interface Crumb {
   to: string;
@@ -31,15 +31,15 @@ export function PageHero({ eyebrow, title, lead, crumbs = [], aside, children }:
       </svg>
       <div className="wrap">
         <nav aria-label="Murupolku" data-reveal className="t-label flex flex-wrap items-center gap-x-3 gap-y-1 text-ink-3">
-          <TLink to="/" className="link-draw">
+          <AppLink to="/" className="link-draw">
             Etusivu
-          </TLink>
+          </AppLink>
           {crumbs.map((c) => (
             <span key={c.to} className="flex items-center gap-3">
               <span aria-hidden="true">/</span>
-              <TLink to={c.to} className="link-draw">
+              <AppLink to={c.to} className="link-draw">
                 {c.label}
-              </TLink>
+              </AppLink>
             </span>
           ))}
         </nav>

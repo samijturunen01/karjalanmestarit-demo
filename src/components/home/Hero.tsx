@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { company } from '../../content/company';
 import { gsap, motionOK, SplitText, useIsoLayoutEffect } from '../../lib/motion';
-import { TLink } from '../layout/PageTransition';
+import { AppLink } from '../layout/Navigation';
 import { ArrowRight } from '../ui/Icons';
 import { Picture } from '../ui/Picture';
 import { IntroLogo } from './IntroLogo';
@@ -42,8 +42,6 @@ export function Hero() {
       if (html.classList.contains('intro-pending')) {
         tl.fromTo(document.querySelectorAll('[data-header-fade]'), { opacity: 0 }, { opacity: 1, duration: 0.8, clearProps: 'opacity' }, 0.35);
       }
-      // Arriving through the page transition: let the sheet clear first
-      if (window.__kmBooted) tl.delay(0.35);
       reveal.current = tl;
     }, el);
 
@@ -103,15 +101,15 @@ export function Hero() {
               vaativiin uudiskohteisiin.
             </p>
             <div data-hero="fade" className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-5">
-              <TLink to="/yhteystiedot#tarjouspyynto" className="btn">
+              <AppLink to="/yhteystiedot#tarjouspyynto" className="btn">
                 <span className="btn-label">Pyydä tarjous</span>
                 <span className="btn-icon">
                   <ArrowRight className="size-4" />
                 </span>
-              </TLink>
-              <TLink to="/referenssit" className="link-line font-[620]">
+              </AppLink>
+              <AppLink to="/referenssit" className="link-line font-[620]">
                 Tutustu referensseihin
-              </TLink>
+              </AppLink>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { photographedProjects, references } from '../../content/references';
 import { floorThousands, formatNumber, referenceStats } from '../../lib/references';
-import { TLink } from '../layout/PageTransition';
+import { AppLink } from '../layout/Navigation';
 import { ArrowRight } from '../ui/Icons';
 import { Picture } from '../ui/Picture';
 import { SectionHead } from '../ui/Section';
@@ -63,7 +63,7 @@ export function FeaturedReferences() {
         {/* Photographed projects */}
         <div className="mt-[clamp(3rem,7vw,6rem)] grid gap-6 md:grid-cols-12 md:gap-x-6">
           <figure className="group md:col-span-7">
-            <TLink to="/referenssit#kuvat" className="block" aria-label={`${main.name}, ${main.place} – katso kuvat`}>
+            <AppLink to="/referenssit#kuvat" className="block" aria-label={`${main.name}, ${main.place} – katso kuvat`}>
               <div data-reveal="mask" className="relative aspect-[4/3] overflow-hidden bg-paper-3">
                 <Picture
                   photo={main.photo}
@@ -71,7 +71,7 @@ export function FeaturedReferences() {
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
                 />
               </div>
-            </TLink>
+            </AppLink>
             <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t border-ink/25 pt-3">
               <span className="font-[620]">{main.name}</span>
               <span className="t-label text-ink-3">{main.place}</span>
@@ -80,7 +80,7 @@ export function FeaturedReferences() {
           <div className="grid gap-6 md:col-span-5 md:grid-rows-2">
             {rest.map((p) => (
               <figure key={p.name} className="group flex flex-col">
-                <TLink to="/referenssit#kuvat" className="block flex-1" aria-label={`${p.name}${p.place ? `, ${p.place}` : ''} – katso kuvat`}>
+                <AppLink to="/referenssit#kuvat" className="block flex-1" aria-label={`${p.name}${p.place ? `, ${p.place}` : ''} – katso kuvat`}>
                   <div data-reveal="mask" className="relative h-full min-h-56 overflow-hidden bg-paper-3">
                     <Picture
                       photo={p.photo}
@@ -88,7 +88,7 @@ export function FeaturedReferences() {
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.4s] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
                     />
                   </div>
-                </TLink>
+                </AppLink>
                 <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t border-ink/25 pt-3">
                   <span className="font-[620]">{p.name}</span>
                   {p.place && <span className="t-label text-ink-3">{p.place}</span>}
@@ -126,12 +126,12 @@ export function FeaturedReferences() {
           </ul>
         </div>
 
-        <TLink data-reveal to="/referenssit" className="btn mt-14">
+        <AppLink data-reveal to="/referenssit" className="btn mt-14">
           <span className="btn-label">Kaikki {stats.count} referenssiä</span>
           <span className="btn-icon">
             <ArrowRight className="size-4" />
           </span>
-        </TLink>
+        </AppLink>
       </div>
     </section>
   );
