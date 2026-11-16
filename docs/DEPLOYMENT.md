@@ -2,11 +2,20 @@
 
 ## Status
 
-**Not published.** The repository exists only locally. Publication is blocked
-until the company has approved the redesign and granted written permission to
-reuse its logo and photographs (see `ASSET_PROVENANCE.md`). The live site
-karjalanmestarit.fi, its domain, DNS, hosting and e-mail are untouched and must
-stay that way.
+**Published as a public concept demo (16.11.2026)** at
+https://samijturunen01.github.io/karjalanmestarit-demo/ from the separate
+repository `samijturunen01/karjalanmestarit-demo`. The repository owner
+confirmed permission to publish the company's existing logo and photographs
+for this demo and set `ASSET_RIGHTS_CONFIRMED=true`.
+
+- Demo mode on (`VITE_DEMO_MODE=true`): "Konseptidemo" label, mock quote form
+  – nothing is sent or stored; no `VITE_QUOTE_ENDPOINT` is configured.
+- Indexing off (`noindex` + `robots.txt Disallow`), no `ALLOW_INDEXING` variable.
+- Contact and invoicing details are still **unverified** (2021 source, see
+  `CONTENT_SOURCES.md`) and are flagged as such on the contact page.
+- This is **not** the company's website and not an approval of the redesign.
+  karjalanmestarit.fi, its domain, DNS, hosting and e-mail are untouched and
+  must stay that way.
 
 ## How the build works on GitHub Pages
 

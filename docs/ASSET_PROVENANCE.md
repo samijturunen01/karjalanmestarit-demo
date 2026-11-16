@@ -11,6 +11,13 @@ into `public/images/` by `npm run images`.
 > until Karjalan Mestarit Oy (and, for the material photos, the original
 > photographer / rights holder) has confirmed in writing that the files may be used.
 
+> **Update 16.11.2026 – demo publication:** the repository owner confirmed
+> having permission to use and publicly publish the company's existing logo
+> and photographs **for this concept demo**, and authorised the public GitHub
+> Pages demo (`samijturunen01/karjalanmestarit-demo`). This covers the demo
+> only. The per-item "Rights status" column below is kept as recorded; written
+> confirmation for every item is still required before any production use.
+
 ## Used in the demo
 
 | Local file(s) | Original URL | Description | Associated project | Rights status |

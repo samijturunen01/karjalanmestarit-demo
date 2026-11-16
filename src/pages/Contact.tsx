@@ -1,10 +1,23 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { QuoteForm } from '../components/contact/QuoteForm';
 import { ArrowUpRight } from '../components/ui/Icons';
 import { PageHero } from '../components/ui/PageHero';
 import { SectionHead, TitleBlock } from '../components/ui/Section';
 import { company, contactGroups, invoicing } from '../content/company';
 import { Fin } from '../components/ui/Fin';
+
+const DEMO = import.meta.env.VITE_DEMO_MODE !== 'false';
+
+/** Demo-only flag: contact and invoicing data come from the company's 2021 site and have not been reconfirmed (docs/CONTENT_SOURCES.md). */
+function UnverifiedNote({ children }: { children: ReactNode }) {
+  if (!DEMO) return null;
+  return (
+    <p role="note" className="t-mono mt-6 border-l-2 border-signal pl-4 text-[0.8rem] leading-relaxed text-ink-2">
+      {children}
+    </p>
+  );
+}
 
 export function Contact() {
   return (
@@ -56,6 +69,10 @@ export function Contact() {
               )),
             )}
           </div>
+          <UnverifiedNote>
+            Konseptidemo: henkilöiden yhteystiedot on koottu yrityksen nykyiseltä sivustolta (päivitetty 2021), eikä niiden ajantasaisuutta ole
+            tarkistettu uudelleen.
+          </UnverifiedNote>
         </div>
       </section>
 
@@ -109,6 +126,10 @@ export function Contact() {
               <p className="mt-4 text-[0.95rem] text-ink-2">
                 Nämä osoitteet on tarkoitettu ainoastaan laskuille. Tarjouspyynnöt ja muut yhteydenotot pyydämme osoittamaan yllä oleville henkilöille.
               </p>
+              <UnverifiedNote>
+                Konseptidemo: laskutustiedot (mm. operaattori) ovat vuoden 2021 sivustolta, eikä niitä ole vahvistettu uudelleen. Tarkista ajantasaiset
+                tiedot yritykseltä ennen käyttöä.
+              </UnverifiedNote>
             </div>
             <dl className="t-mono grid gap-x-10 gap-y-6 text-[0.88rem] sm:grid-cols-2 lg:col-span-8">
               <div>
