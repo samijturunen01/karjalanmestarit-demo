@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Vesikattourakointi Joensuu – Karjalan Mestarit Oy</title>
+    <meta name="description" content="Karjalan Mestarit Oy on joensuulainen vesikattourakoitsija Pohjois-Karjalassa ja Pohjois-Savossa." />
+    <!-- Speculative redesign demo: kept out of search engines unless ALLOW_INDEXING=true (see scripts/prerender.mjs) -->
+    <meta name="robots" content="noindex, nofollow" data-demo-robots />
+    <meta name="theme-color" content="#eeeae2" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fi_FI" />
+    <meta property="og:site_name" content="Karjalan Mestarit Oy" />
+    <meta property="og:title" content="Vesikattourakointi Joensuu – Karjalan Mestarit Oy" />
+    <meta property="og:description" content="Karjalan Mestarit Oy on joensuulainen vesikattourakoitsija Pohjois-Karjalassa ja Pohjois-Savossa." />
+    <meta property="og:image" content="%BASE_URL%og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="%BASE_URL%favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="%BASE_URL%favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+    <!--head-extra-->
+    <script>
+      /* Motion pre-states, set before first paint so prerendered content never flashes.
+         Classes: motion (scroll reveals), hero-pending (hero reveal), intro-pending (logo intro).
+         Safety net: if the app has not booted within 5 s, every pre-state is removed. */
+      (function () {
+        var d = document.documentElement;
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) return;
+        d.classList.add('motion');
+        var base = '%BASE_URL%';
+        var path = location.pathname;
+        var isHome = path === base || path === base.replace(/\/$/, '') || path === base + 'index.html';
+        if (isHome) {
+          d.classList.add('hero-pending');
+          var seen = false;
+          try { seen = sessionStorage.getItem('km-intro') === '1'; } catch (e) {}
+          if (!seen) d.classList.add('intro-pending');
+        }
+        setTimeout(function () {
+          if (!window.__kmBooted) d.classList.remove('motion', 'hero-pending', 'intro-pending');
+        }, 5000);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+    <noscript><style>[data-reveal],[data-hero]{opacity:1!important;transform:none!important}</style></noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

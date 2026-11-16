@@ -1,0 +1,82 @@
+# GitHub Pages deployment – DELIBERATELY GATED.
+#
+# This is a speculative redesign that Karjalan Mestarit Oy has not approved,
+# and the logo + photographs are reused without confirmed permission.
+# Deployment therefore runs ONLY when BOTH are true:
+#   1. it is started manually (Actions → "Deploy demo to GitHub Pages" → Run workflow), and
+#   2. the repository variable ASSET_RIGHTS_CONFIRMED is set to "true"
+#      (Settings → Secrets and variables → Actions → Variables),
+#      which you should only do after written permission for every item in
+#      docs/ASSET_PROVENANCE.md.
+# Indexing stays OFF (noindex + robots Disallow) unless the ALLOW_INDEXING
+# variable is also set to "true". See docs/DEPLOYMENT.md.
+name: Deploy demo to GitHub Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type PUBLISH to confirm that asset rights are cleared'
+        required: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check publication gate
+        run: |
+          if [ "${{ vars.ASSET_RIGHTS_CONFIRMED }}" != "true" ]; then
+            echo "::error::ASSET_RIGHTS_CONFIRMED is not 'true' – publication rights for the logo/photos are not confirmed. Not deploying."
+            exit 1
+          fi
+          if [ "${{ inputs.confirm }}" != "PUBLISH" ]; then
+            echo "::error::Confirmation input must be PUBLISH."
+            exit 1
+          fi
+
+  build:
+    needs: gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck && npm run lint && npm test
+      - id: pages
+        uses: actions/configure-pages@v5
+      - name: Build (project sub-path)
+        run: npm run build
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+          ALLOW_INDEXING: ${{ vars.ALLOW_INDEXING || 'false' }}
+          VITE_DEMO_MODE: ${{ vars.VITE_DEMO_MODE || 'true' }}
+      - run: npm run verify
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+          ALLOW_INDEXING: ${{ vars.ALLOW_INDEXING || 'false' }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

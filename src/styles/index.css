@@ -1,0 +1,397 @@
+@import 'tailwindcss';
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Karjalan Mestarit – visual system "Räystäältä harjalle"
+   Paper (kalkki) · Graphite · Bitumen · Signal red (from the logo)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  --color-paper: #eeeae2;
+  --color-paper-2: #e6e0d5;
+  --color-paper-3: #d5cdbf;
+  --color-ink: #161514;
+  --color-ink-2: #45423e;
+  --color-ink-3: #67625b;
+  --color-bitumen: #131211;
+  --color-bitumen-2: #1c1a18;
+  --color-bitumen-3: #2c2926;
+  --color-on-dark: #eeeae2;
+  --color-on-dark-2: #aaa39a;
+  --color-signal: #d9161e;
+  --color-signal-ink: #b3121a;
+  --color-signal-bright: #f2453b;
+  --color-logo-red: #ff0000;
+
+  --font-sans: 'Mona Sans Variable', 'Mona Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  --ease-roof: cubic-bezier(0.72, 0, 0.18, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --breakpoint-xs: 30rem;
+}
+
+:root {
+  --gutter: clamp(1rem, 4.2vw, 3.5rem);
+  --header-h: 4.5rem;
+  --seam: 5.5rem;
+  color-scheme: light;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+  }
+  body {
+    min-height: 100dvh;
+    background: var(--color-paper);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    font-weight: 400;
+    font-stretch: 100%;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-signal);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+  .on-dark :focus-visible {
+    outline-color: var(--color-signal-bright);
+  }
+  img,
+  svg {
+    display: block;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a[href^='tel:'] {
+    white-space: nowrap;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+@utility wrap {
+  width: 100%;
+  max-width: 96rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ── Type ─────────────────────────────────────────────────────────────────── */
+@utility t-display {
+  font-stretch: 75%;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.022em;
+}
+@utility t-h2 {
+  font-stretch: 78%;
+  font-weight: 760;
+  line-height: 0.95;
+  letter-spacing: -0.018em;
+}
+@utility t-h3 {
+  font-stretch: 85%;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+@utility t-label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+@utility t-mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+@utility t-lead {
+  font-size: clamp(1.125rem, 1.05rem + 0.45vw, 1.375rem);
+  line-height: 1.5;
+  font-weight: 420;
+}
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Surfaces & textures ──────────────────────────────────────────────────── */
+@utility on-dark {
+  background-color: var(--color-bitumen);
+  color: var(--color-on-dark);
+}
+
+/* Bitumen granules: very fine light specks */
+@utility tex-granule {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .075 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Paper fibre: dark specks for light surfaces */
+@utility tex-paper {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .09 0 0 0 0 .08 0 0 0 0 .07 0 0 0 .055 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Standing seams of a sheet-metal roof, seen from above */
+@utility seams {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 calc(var(--seam) - 1px),
+    rgb(238 234 226 / 0.05) calc(var(--seam) - 1px) var(--seam)
+  );
+}
+@utility seams-ink {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 calc(var(--seam) - 1px),
+    rgb(22 21 20 / 0.06) calc(var(--seam) - 1px) var(--seam)
+  );
+}
+/* Engineering grid for the drawing-sheet hero */
+@utility drafting-grid {
+  background-image:
+    linear-gradient(rgb(22 21 20 / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(22 21 20 / 0.055) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  background-position: -1px -1px;
+}
+
+/* Hairline rules */
+@utility rule {
+  height: 1px;
+  background: currentColor;
+  opacity: 0.18;
+}
+
+/* ── Components ───────────────────────────────────────────────────────────── */
+@layer components {
+  /* Primary CTA: a dark course slides up from the eave on hover */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: stretch;
+    min-height: 3.25rem;
+    font-weight: 620;
+    font-size: 0.98rem;
+    letter-spacing: 0.005em;
+    color: #fff;
+    background: var(--color-signal);
+    isolation: isolate;
+    overflow: hidden;
+    transition: color 0.3s;
+  }
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--color-ink);
+    transform: scaleY(0);
+    transform-origin: 50% 100%;
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+  .on-dark .btn::before,
+  .btn-on-dark::before {
+    background: var(--color-paper);
+  }
+  .on-dark .btn:hover,
+  .btn-on-dark:hover {
+    color: var(--color-ink);
+  }
+  .btn:hover::before,
+  .btn:focus-visible::before {
+    transform: scaleY(1);
+  }
+  .btn > .btn-label {
+    display: flex;
+    align-items: center;
+    padding: 0 1.4rem;
+  }
+  .btn > .btn-icon {
+    display: grid;
+    place-items: center;
+    width: 3.25rem;
+    border-left: 1px solid rgb(255 255 255 / 0.28);
+    overflow: hidden;
+  }
+  .btn .btn-icon svg {
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+  .btn:hover .btn-icon svg {
+    transform: translateX(0.3rem) rotate(-0deg);
+  }
+
+  /* Text link with a drawn underline */
+  .link-line {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 0.15em;
+    transition: background-size 0.5s var(--ease-out-expo);
+  }
+  .link-line:hover {
+    background-size: 0% 1px;
+    background-position: 100% 100%;
+  }
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 0.1em;
+    transition: background-size 0.45s var(--ease-out-expo);
+  }
+  .link-draw:hover,
+  .link-draw[aria-current='page'] {
+    background-size: 100% 1px;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    transform: translateY(-200%);
+  }
+  .skip-link:focus {
+    transform: none;
+  }
+
+  /* Form fields */
+  .field-input {
+    width: 100%;
+    min-height: 3.25rem;
+    padding: 0.85rem 1rem;
+    background: var(--color-paper);
+    border: 1px solid rgb(22 21 20 / 0.28);
+    border-radius: 0;
+    color: var(--color-ink);
+    font: inherit;
+    font-size: 1rem;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s,
+      background-color 0.2s;
+  }
+  .field-input:hover {
+    border-color: rgb(22 21 20 / 0.55);
+  }
+  .field-input:focus {
+    outline: none;
+    border-color: var(--color-ink);
+    box-shadow: inset 0 -3px 0 var(--color-signal);
+    background: #f6f3ee;
+  }
+  .field-input[aria-invalid='true'] {
+    border-color: var(--color-signal-ink);
+    box-shadow: inset 3px 0 0 var(--color-signal-ink);
+  }
+  select.field-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23161514' stroke-width='1.6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.75rem;
+  }
+}
+
+/* ── Motion pre-states (only when JS + motion are available; see index.html) ─ */
+html.motion [data-reveal] {
+  opacity: 0;
+}
+html.motion [data-reveal='rule'] {
+  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+html.motion [data-reveal='draw'],
+html.motion [data-reveal='mask'] {
+  opacity: 1;
+}
+html.motion [data-reveal='draw'] [data-draw] {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+}
+html.motion [data-reveal='draw'] [data-fill] {
+  opacity: 0;
+}
+html.motion [data-reveal='mask'] {
+  clip-path: inset(100% 0% 0% 0%);
+}
+html.motion [data-reveal='wipe'] {
+  opacity: 1;
+  clip-path: inset(0% 100% 0% 0%);
+}
+.split-line {
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+html.hero-pending [data-hero] {
+  opacity: 0;
+}
+/* Hero roof band: final silhouette, and the flat "eave line" it rises from */
+.roof-shape {
+  clip-path: polygon(0% 44%, 64% 0%, 100% 30%, 100% 100%, 0% 100%);
+}
+html.hero-pending [data-hero='roof'] {
+  opacity: 1;
+}
+html.hero-pending .roof-shape {
+  clip-path: polygon(0% 100%, 64% 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+html.hero-pending [data-hero='rule'] {
+  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+html.intro-pending [data-header-logo],
+html.intro-pending [data-header-fade] {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html [data-reveal],
+  html [data-hero] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
